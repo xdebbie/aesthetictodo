@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
-import { View, TextInput, Button } from 'react-native'
+import { View, TextInput } from 'react-native'
+import { Button } from 'react-native-elements'
 
 export class AddTodo extends Component {
     constructor() {
@@ -16,7 +17,11 @@ export class AddTodo extends Component {
         return (
             <View style={{ marginBottom: 20 }}>
                 <TextInput
-                    style={{ height: 40, marginTop: 40 }}
+                    style={{
+                        height: 40,
+                        marginTop: 40,
+                        fontFamily: 'monospace',
+                    }}
                     placeholder="Write your chores..."
                     onChangeText={addTodo => this.setState({ addTodo })}
                     clearButtonMode="always"
@@ -38,7 +43,22 @@ export class AddTodo extends Component {
                         }
                     }}
                     title="Add"
-                />
+                    buttonStyle={{
+                        backgroundColor: '#ff0056',
+                        flex: 1,
+                        height: 20,
+                        width: '100%',
+                        borderRadius: 0,
+                    }}
+                    titleStyle={{
+                        fontSize: 14,
+                        fontFamily: 'monospace',
+                        textTransform: 'lowercase',
+                    }}
+                    containerStyle={{
+                        marginBottom: 5,
+                    }}
+                ></Button>
             </View>
         )
     }

@@ -18,12 +18,6 @@ const Todo = ({ onClick, completed, text }) => (
     </TouchableOpacity>
 )
 
-// const styles = StyleSheet.create({
-//     todoItem: {
-//         backgroundColor: 'whitesmoke',
-//     },
-// })
-
 Todo.propTypes = {
     onClick: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,

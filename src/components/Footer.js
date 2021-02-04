@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native'
 const Footer = () => (
     <View style={styles.containerMain}>
         <View style={styles.containerFooter}>
-            <Text style={styles.displayLabel}>Display:</Text>
+            <Text style={styles.displayLabel}>ディスプレー</Text>
             <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
             <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>
                 Active
@@ -29,11 +29,10 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     displayLabel: {
-        backgroundColor: 'white',
-        height: 30,
         paddingTop: 5,
-        fontSize: 16,
-        textAlign: 'center',
+        paddingBottom: 10,
+        fontSize: 14,
+        textAlign: 'left',
     },
 })
 
