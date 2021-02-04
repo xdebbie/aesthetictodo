@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TouchableOpacity } from 'react-native'
 import Todo from './Todo'
 
 const TodoList = ({ todos, toggleTodo }) =>

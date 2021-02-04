@@ -13,13 +13,31 @@ export class AddTodo extends Component {
         }
     }
 
+    returnPressed = event => {
+        if (event.nativeEvent.key == 'Enter' && !this.state.addTodo) {
+            return
+        } else if (event.nativeEvent.key == 'Enter') {
+            this.props.dispatch(addTodo(this.state.addTodo))
+            // clearing the input
+            this.state.addTodo = ''
+            this.TextInput.clear()
+        }
+    }
+
+    returnPressedMobile = () => {
+        this.props.dispatch(addTodo(this.state.addTodo))
+        // clearing the input
+        this.state.addTodo = ''
+        this.TextInput.clear()
+    }
+
     render() {
         return (
             <View style={{ marginBottom: 20 }}>
                 <TextInput
                     style={{
-                        height: 40,
                         marginTop: 40,
+                        height: 40,
                         fontFamily: 'monospace',
                     }}
                     placeholder="Write your chores..."
@@ -31,23 +49,11 @@ export class AddTodo extends Component {
                         this.TextInput = input
                     }}
                     // to alternatively allow the input to be sent if the return key is pressed
-                    onKeyPress={event => {
-                        if (
-                            event.nativeEvent.key == 'Enter' &&
-                            !this.state.addTodo
-                        ) {
-                            return
-                        } else if (event.nativeEvent.key == 'Enter') {
-                            this.props.dispatch(addTodo(this.state.addTodo))
-                            // clearing the input
-                            this.state.addTodo = ''
-                            this.TextInput.clear()
-                            console.log(this.props)
-                        }
-                    }}
+                    onKeyPress={this.returnPressed.bind(this)}
+                    // when pressing the return key on Android keyboards
+                    onSubmitEditing={this.returnPressedMobile.bind(this)}
                 />
                 <Button
-                    color="#ff0056"
                     onPress={() => {
                         if (!this.state.addTodo) {
                             return
@@ -56,16 +62,16 @@ export class AddTodo extends Component {
                             // clearing the input
                             this.state.addTodo = ''
                             this.TextInput.clear()
-                            console.log(this.props)
                         }
                     }}
                     title="Add"
                     buttonStyle={{
                         backgroundColor: '#ff0056',
                         flex: 1,
-                        height: 20,
                         width: '100%',
                         borderRadius: 0,
+                        maxHeight: 20,
+                        padding: 20,
                     }}
                     titleStyle={{
                         fontSize: 14,

@@ -7,7 +7,6 @@ import rootReducer from './src/redux'
 import TodoApp from './src/components/TodoApp'
 
 const store = createStore(rootReducer)
-//console.log(store)
 export default class MainApp extends React.Component {
     render() {
         return (

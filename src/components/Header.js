@@ -11,6 +11,8 @@ const styles = StyleSheet.create({
         top: 30,
         textAlign: 'center',
         paddingBottom: 25,
+        marginLeft: 'auto',
+        marginRight: 'auto',
     },
     header: {
         fontSize: 14,
