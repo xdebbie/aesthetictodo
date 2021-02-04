@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 14,
-        color: '#791f94',
         fontStyle: 'italic',
     },
 })

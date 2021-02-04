@@ -23,11 +23,27 @@ export class AddTodo extends Component {
                         fontFamily: 'monospace',
                     }}
                     placeholder="Write your chores..."
+                    placeholderTextColor="#99a1a7"
                     onChangeText={addTodo => this.setState({ addTodo })}
                     clearButtonMode="always"
                     // to clear the input field after submitted
                     ref={input => {
                         this.TextInput = input
+                    }}
+                    // to alternatively allow the input to be sent if the return key is pressed
+                    onKeyPress={event => {
+                        if (
+                            event.nativeEvent.key == 'Enter' &&
+                            !this.state.addTodo
+                        ) {
+                            return
+                        } else if (event.nativeEvent.key == 'Enter') {
+                            this.props.dispatch(addTodo(this.state.addTodo))
+                            // clearing the input
+                            this.state.addTodo = ''
+                            this.TextInput.clear()
+                            console.log(this.props)
+                        }
                     }}
                 />
                 <Button
@@ -38,6 +54,7 @@ export class AddTodo extends Component {
                         } else {
                             this.props.dispatch(addTodo(this.state.addTodo))
                             // clearing the input
+                            this.state.addTodo = ''
                             this.TextInput.clear()
                             console.log(this.props)
                         }
